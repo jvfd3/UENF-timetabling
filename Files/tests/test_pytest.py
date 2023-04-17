@@ -1,7 +1,7 @@
+from my_package.maincode import my_sum
 import pytest
 """ Using pytest for testing code """
 
-from my_package.maincode import my_sum
 
 def test_list_int():
     """ Tests that it can sum a list of integers """
@@ -34,8 +34,8 @@ def collections_equals_fifteen(data):
     expected_value = 15
     message = "It should be 15"
     assert function_result == expected_value, message
-    assert function_result == 14, message
-    assert function_result == 13, message
+    # assert function_result == 14, message
+    # assert function_result == 13, message
 
 def test_collections_equals_fifteen():
     """ tests different collections if they sum to fifteen """
