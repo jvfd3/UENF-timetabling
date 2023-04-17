@@ -26,6 +26,7 @@ def test_tuple_float():
     result = my_sum(data)
     assert result == 15, "It should be 15"
 
+@pytest.mark.xfail
 def collections_equals_fifteen(data):
     """ receives some collection data """
     function_result = my_sum(data)
