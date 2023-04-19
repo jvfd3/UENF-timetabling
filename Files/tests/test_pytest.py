@@ -7,7 +7,7 @@ def test_list_int():
     """ Tests that it can sum a list of integers """
     data = [4, 5, 6]
     result = my_sum(data)
-    assert result == 16, "It should be 15"
+    assert result == 15, "It should be 15"
 
 def test_list_float():
     """ Tests that it can sum a list of floats """
