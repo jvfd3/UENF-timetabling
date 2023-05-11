@@ -6,11 +6,11 @@
 
 To run this project, you will need to create and activate a Python virtual environment and install the dependencies listed in the requirements.txt file. Follow these steps:
 
-## Create and activate the virtual environment
+### 1. Create and activate the virtual environment
 
-### Open a command prompt and navigate to the project folder. Then run:
+#### 1.1 Open a command prompt and navigate to the project folder. Then run:
 
-#### Linux / Mac:
+- Linux / Mac:
 ```bash
 python3 -m venv env
 ```
@@ -18,7 +18,7 @@ python3 -m venv env
 source env/bin/activate
 ```
 
-#### Windows: 
+- Windows: 
 ```bash
 python -m venv env
 ```
@@ -29,7 +29,7 @@ env\Scripts\activate.bat
 This will create a folder called `env` inside the project folder, where the virtual environment files will be stored.
 You should see `(env)` at the beginning of your prompt, indicating that the virtual environment is active.
 
-### Install the requirements
+### 1.2 Install the requirements
 
 ```bash
 pip install -r requirements.txt
@@ -38,3 +38,9 @@ This will install all the packages listed in the requirements.txt file in your v
 
 
 You are now ready to run the project!
+
+## Use
+- To start the server run:
+```bash
+uvicorn main:app --reload
+```
