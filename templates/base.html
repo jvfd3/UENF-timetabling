@@ -16,7 +16,7 @@
     <div style="margin-top: 50px" class="ui container">
       <h1 class="ui center aligned header">To Do App</h1>
 
-      <form class="ui form" action="/add" method="post">
+      <form class="ui form" action="/todo/add" method="post">
         <div class="field">
           <label>Todo Title</label>
           <input type="text" name="title" placeholder="Enter Todo..." /><br />
@@ -36,8 +36,8 @@
         <span class="ui green label">Completed</span>
         {% endif %}
 
-        <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
-        <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
+        <a class="ui blue button" href="/todo/update/{{ todo.id }}">Update</a>
+        <a class="ui red button" href="/todo/delete/{{ todo.id }}">Delete</a>
       </div>
       {% endfor %}
     </div>
