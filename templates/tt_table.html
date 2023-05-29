@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimeTabling App</title>
+
+    <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px solid black;
+      width: 100px;
+      height: 100px;
+    }
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  </head>
+
+  <body>
+    <div style="margin-top: 50px" class="ui container">
+      <h1 class="ui center aligned header">Time Tabling App</h1>
+
+      <form class="ui form" action="/add" method="post">
+        <div class="field">
+          <label>Todo Title</label>
+          <input type="text" name="title" placeholder="Enter time_slot..." /><br />
+        </div>
+        <button class="ui blue button" type="submit">Add</button>
+      </form>
+
+      <hr />
+
+      <table>
+        {% for i in range(4) %}
+          <tr>
+          {% for j in range(5) %}
+            <td>
+            {% set square = i * 5 + j %}
+              {% for time_slot in time_slot_list %}
+                {% if time_slot.slot|int == square %}
+                  {{ time_slot.turma_id }}  
+                {% endif %}
+              {% endfor %}
+            </td>
+          {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+
+    </div>
+  </body>
+</html>

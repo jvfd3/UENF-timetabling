@@ -26,6 +26,15 @@ def get_db():
     finally:
         db.close()
 
+
+@app.get("/table")
+def time_slots_table(request: Request, db: Session = Depends(get_db)):
+    """ table """
+    time_slots = db.query(models.TimeSlot).all()
+    print(models.TimeSlot.slot.type) #Integer
+    return templates.TemplateResponse("tt_table.html",
+                                    {"request": request, "time_slot_list": time_slots})
+
 @app.get("/")
 def home(request: Request, db: Session = Depends(get_db)):
     """ Home """
