@@ -46,7 +46,7 @@ def time_slot_add(
 
 
 @app.get("/delete/{time_slot_id}")
-def todo_delete(request: Request, time_slot_id: int, db: Session = Depends(get_db)):
+def time_slot_delete(request: Request, time_slot_id: int, db: Session = Depends(get_db)):
     """ Delete """
     todo = db.query(models.TimeSlot).filter(models.TimeSlot.id == time_slot_id).first()
     db.delete(todo)
