@@ -27,12 +27,33 @@ def get_db():
         db.close()
 
 @app.get("/")
-def home():
+def home(request: Request, db: Session = Depends(get_db)):
     """ Home """
-    return "Test"
+    time_slots = db.query(models.TimeSlot).all()
+    return templates.TemplateResponse("tt_index.html",
+                                    {"request": request, "time_slot_list": time_slots})
+
+@app.post("/add")
+def time_slot_add(
+    request: Request, turma_id: str = Form(...), time_slot: str = Form(), db: Session = Depends(get_db)):
+    """ Add Time Slots"""
+    new_time_slot = models.TimeSlot(turma_id = turma_id, slot = int(time_slot))
+    db.add(new_time_slot)
+    db.commit()
+
+    url = app.url_path_for("home")
+    return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
 
 
+@app.get("/delete/{time_slot_id}")
+def todo_delete(request: Request, time_slot_id: int, db: Session = Depends(get_db)):
+    """ Delete """
+    todo = db.query(models.TimeSlot).filter(models.TimeSlot.id == time_slot_id).first()
+    db.delete(todo)
+    db.commit()
 
+    url = app.url_path_for("home")
+    return RedirectResponse(url=url, status_code=status.HTTP_302_FOUND)
 
 
 @app.get("/todo")

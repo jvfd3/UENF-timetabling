@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimeTabling App</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  </head>
+
+  <body>
+    <div style="margin-top: 50px" class="ui container">
+      <h1 class="ui center aligned header">Time Tabling App</h1>
+
+      <form class="ui form" action="/add" method="post">
+        <div class="field">
+          <label>Turma ID</label>
+          <input type="text" name="turma_id" placeholder="Enter turma_id..." /><br />
+        </div>
+
+        <div class="field">
+          <label>Time Slot</label>
+          <input type="text" name="time_slot" placeholder="Enter time_slot..." /><br />
+        </div>
+
+        <button class="ui blue button" type="submit">Add</button>
+      </form>
+
+      <hr />
+
+      {% for time_slot in time_slot_list %}
+      <div class="ui segment">
+        <p class="ui big header">{{time_slot.id }} | turma: {{ time_slot.turma_id }}; slot: {{time_slot.slot}} </p>
+<!-- 
+        {% if time_slot.complete == False %}
+        <span class="ui gray label">Not Complete</span>
+        {% else %}
+        <span class="ui green label">Completed</span>
+        {% endif %} -->
+
+        <!-- <a class="ui blue button" href="/update/{{ time_slot.id }}">Update</a> -->
+        <a class="ui red button" href="/delete/{{ time_slot.id }}">Delete</a>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
