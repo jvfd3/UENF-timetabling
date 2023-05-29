@@ -44,4 +44,4 @@ class TimeSlot(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     turma_id: Mapped[int] = mapped_column(ForeignKey("turma.id"))
-    slot: Mapped[str] = mapped_column(Integer) #TODO: consider monA, tueC || AA, BC || 0, 10 
+    slot: Mapped[int] = mapped_column(Integer) #TODO: consider monA, tueC || AA, BC || 0, 10 
