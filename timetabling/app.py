@@ -1,7 +1,7 @@
 """ App """
 
 from fastapi import FastAPI, Depends, Request, Form, status
-from fastapi.staticfiles import StaticFiles # Just to add Favicon
+from fastapi.staticfiles import StaticFiles  # Just to add Favicon
 
 from starlette.responses import RedirectResponse
 from starlette.templating import Jinja2Templates
@@ -17,7 +17,9 @@ templates = Jinja2Templates(directory="templates")
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static") # Just to add Favicon
+app.mount(
+    "/static", StaticFiles(directory="static"), name="static"
+)  # Just to add Favicon
 # Note: if you deal with favicon in chrome, remember to do shift+f5 to reload without cached data
 
 # Dependency
@@ -34,33 +36,46 @@ def get_db():
 def time_slots_table(request: Request, db: Session = Depends(get_db)):
     """ table """
     time_slots = db.query(models.TimeSlot).all()
-    print(models.TimeSlot.slot.type) #Integer
-    return templates.TemplateResponse("tt_table.html",
-                                    {"request": request, "time_slot_list": time_slots})
+    print(models.TimeSlot.slot.type)  # Integer
+    return templates.TemplateResponse(
+        "tt_table.html", {"request": request, "time_slot_list": time_slots}
+    )
+
 
 @app.post("/table/add")
 def time_slot_add_table(
-    request: Request, turma_id: str = Form(...), time_slot: str = Form(), db: Session = Depends(get_db)):
+    request: Request,
+    turma_id: str = Form(...),
+    time_slot: str = Form(),
+    db: Session = Depends(get_db),
+):
     """ Add Time Slots"""
-    new_time_slot = models.TimeSlot(turma_id = turma_id, slot = int(time_slot))
+    new_time_slot = models.TimeSlot(turma_id=turma_id, slot=int(time_slot))
     db.add(new_time_slot)
     db.commit()
 
     url = app.url_path_for("time_slots_table")
     return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
 
+
 @app.get("/")
 def home(request: Request, db: Session = Depends(get_db)):
     """ Home """
     time_slots = db.query(models.TimeSlot).all()
-    return templates.TemplateResponse("tt_index.html",
-                                    {"request": request, "time_slot_list": time_slots})
+    return templates.TemplateResponse(
+        "tt_index.html", {"request": request, "time_slot_list": time_slots}
+    )
+
 
 @app.post("/add")
 def time_slot_add(
-    request: Request, turma_id: str = Form(...), time_slot: str = Form(), db: Session = Depends(get_db)):
+    request: Request,
+    turma_id: str = Form(...),
+    time_slot: str = Form(),
+    db: Session = Depends(get_db),
+):
     """ Add Time Slots"""
-    new_time_slot = models.TimeSlot(turma_id = turma_id, slot = int(time_slot))
+    new_time_slot = models.TimeSlot(turma_id=turma_id, slot=int(time_slot))
     db.add(new_time_slot)
     db.commit()
 
@@ -69,7 +84,9 @@ def time_slot_add(
 
 
 @app.get("/delete/{time_slot_id}")
-def time_slot_delete(request: Request, time_slot_id: int, db: Session = Depends(get_db)):
+def time_slot_delete(
+    request: Request, time_slot_id: int, db: Session = Depends(get_db)
+):
     """ Delete """
     todo = db.query(models.TimeSlot).filter(models.TimeSlot.id == time_slot_id).first()
     db.delete(todo)
@@ -83,8 +100,9 @@ def time_slot_delete(request: Request, time_slot_id: int, db: Session = Depends(
 def todo_home(request: Request, db: Session = Depends(get_db)):
     """ Todo Home """
     todos = db.query(models.Todo).all()
-    return templates.TemplateResponse("base.html",
-                                      {"request": request, "todo_list": todos})
+    return templates.TemplateResponse(
+        "base.html", {"request": request, "todo_list": todos}
+    )
 
 
 @app.post("/todo/add")
