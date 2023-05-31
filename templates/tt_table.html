@@ -28,14 +28,19 @@
     <div style="margin-top: 50px" class="ui container">
       <h1 class="ui center aligned header">Time Tabling App</h1>
 
-      <form class="ui form" action="/add" method="post">
+      <form class="ui form" action="/table/add" method="post">
         <div class="field">
-          <label>Todo Title</label>
-          <input type="text" name="title" placeholder="Enter time_slot..." /><br />
+          <label>Turma ID</label>
+          <input type="text" name="turma_id" placeholder="Enter turma_id..." /><br />
         </div>
+
+        <div class="field">
+          <label>Time Slot</label>
+          <input type="text" name="time_slot" placeholder="Enter time_slot..." /><br />
+        </div>
+
         <button class="ui blue button" type="submit">Add</button>
       </form>
-
       <hr />
 
       <table>

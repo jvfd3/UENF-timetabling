@@ -35,6 +35,17 @@ def time_slots_table(request: Request, db: Session = Depends(get_db)):
     return templates.TemplateResponse("tt_table.html",
                                     {"request": request, "time_slot_list": time_slots})
 
+@app.post("/table/add")
+def time_slot_add_table(
+    request: Request, turma_id: str = Form(...), time_slot: str = Form(), db: Session = Depends(get_db)):
+    """ Add Time Slots"""
+    new_time_slot = models.TimeSlot(turma_id = turma_id, slot = int(time_slot))
+    db.add(new_time_slot)
+    db.commit()
+
+    url = app.url_path_for("time_slots_table")
+    return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
+
 @app.get("/")
 def home(request: Request, db: Session = Depends(get_db)):
     """ Home """
