@@ -1,6 +1,7 @@
 """ App """
 
 from fastapi import FastAPI, Depends, Request, Form, status
+from fastapi.staticfiles import StaticFiles # Just to add Favicon
 
 from starlette.responses import RedirectResponse
 from starlette.templating import Jinja2Templates
@@ -16,6 +17,8 @@ templates = Jinja2Templates(directory="templates")
 
 app = FastAPI()
 
+app.mount("/static", StaticFiles(directory="static"), name="static") # Just to add Favicon
+# Note: if you deal with favicon in chrome, remember to do shift+f5 to reload without cached data
 
 # Dependency
 def get_db():
