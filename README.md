@@ -1,3 +1,5 @@
+![tests](https://github.com/jvfd3/UENF-timetabling/actions/workflows/python_tests.yml/badge.svg)
+
 # What is needed?
 
 Disclaimer: All code here was based on the code created by [Patrick Loeber][LinkYouTube].
