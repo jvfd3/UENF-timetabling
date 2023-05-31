@@ -1,6 +1,6 @@
 """ Models """
 
-from sqlalchemy import Boolean, Column, Integer, String
+from sqlalchemy import Boolean, Integer, String
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy import ForeignKey
