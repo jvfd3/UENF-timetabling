@@ -14,17 +14,25 @@
 
   <body>
     <div style="margin-top: 50px" class="ui container">
-      <h1 class="ui center aligned header">Time Tabling App</h1>
+      <h1 class="ui center aligned header">Timetabling App</h1>
 
       <form class="ui form" action="/add" method="post">
         <div class="field">
           <label>Turma ID</label>
-          <input type="text" name="turma_id" placeholder="Enter turma_id..." /><br />
+          <input
+            type="text"
+            name="turma_id"
+            placeholder="Enter turma_id..."
+          /><br />
         </div>
 
         <div class="field">
           <label>Time Slot</label>
-          <input type="text" name="time_slot" placeholder="Enter time_slot..." /><br />
+          <input
+            type="text"
+            name="time_slot"
+            placeholder="Enter time_slot..."
+          /><br />
         </div>
 
         <button class="ui blue button" type="submit">Add</button>
@@ -34,8 +42,11 @@
 
       {% for time_slot in time_slot_list %}
       <div class="ui segment">
-        <p class="ui big header">{{time_slot.id }} | turma: {{ time_slot.turma_id }}; slot: {{time_slot.slot}} </p>
-<!-- 
+        <p class="ui big header">
+          {{time_slot.id }} | turma: {{ time_slot.turma_id }}; slot:
+          {{time_slot.slot}}
+        </p>
+        <!-- 
         {% if time_slot.complete == False %}
         <span class="ui gray label">Not Complete</span>
         {% else %}

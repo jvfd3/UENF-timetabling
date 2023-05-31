@@ -6,15 +6,15 @@
     <title>TimeTabling App</title>
 
     <style>
-    table {
-      border-collapse: collapse;
-    }
+      table {
+        border-collapse: collapse;
+      }
 
-    td {
-      border: 1px solid black;
-      width: 100px;
-      height: 100px;
-    }
+      td {
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+      }
     </style>
 
     <link
@@ -31,12 +31,20 @@
       <form class="ui form" action="/table/add" method="post">
         <div class="field">
           <label>Turma ID</label>
-          <input type="text" name="turma_id" placeholder="Enter turma_id..." /><br />
+          <input
+            type="text"
+            name="turma_id"
+            placeholder="Enter turma_id..."
+          /><br />
         </div>
 
         <div class="field">
           <label>Time Slot</label>
-          <input type="text" name="time_slot" placeholder="Enter time_slot..." /><br />
+          <input
+            type="text"
+            name="time_slot"
+            placeholder="Enter time_slot..."
+          /><br />
         </div>
 
         <button class="ui blue button" type="submit">Add</button>
@@ -45,21 +53,17 @@
 
       <table>
         {% for i in range(4) %}
-          <tr>
+        <tr>
           {% for j in range(5) %}
-            <td>
-            {% set square = i * 5 + j %}
-              {% for time_slot in time_slot_list %}
-                {% if time_slot.slot|int == square %}
-                  {{ time_slot.turma_id }}  
-                {% endif %}
-              {% endfor %}
-            </td>
+          <td>
+            {% set square = i * 5 + j %} {% for time_slot in time_slot_list %}
+            {% if time_slot.slot|int == square %} {{ time_slot.turma_id }} {%
+            endif %} {% endfor %}
+          </td>
           {% endfor %}
-          </tr>
+        </tr>
         {% endfor %}
       </table>
-
     </div>
   </body>
 </html>

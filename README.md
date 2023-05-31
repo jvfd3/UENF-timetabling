@@ -4,8 +4,6 @@ Disclaimer: All code here was based on the code created by [Patrick Loeber][Link
 
 [LinkYouTube]: https://youtu.be/3vfum74ggHE
 
-- Come to this folder from project root
-  - `cd Files/hello_world`
 - Create Python's Virtual Environment
   - `python3 -m venv venv`
   - Activate venv
@@ -13,16 +11,12 @@ Disclaimer: All code here was based on the code created by [Patrick Loeber][Link
       - `. venv/bin/activate`
     - Windows
       - `. venv\Scripts\activate.bat`
-  - `pip install fastapi`
-  - ASGI Server
-    - `pip install "uvicorn[standard]"`
+  - `pip install fastapi "uvicorn[standard]" python-multipart sqlalchemy jinja2`
+  - ASGI Server: "uvicorn[standard]"
   - Template and DB support
-    - `pip install python-multipart sqlalchemy jinja2`
-- Create 4 files
-  - templates/base.html
-  - app.py
-  - database.py
-  - models.py
+    - python-multipart
+    - sqlalchemy
+    - jinja2
 - Start Server
   - "uvicorn file_name:server_instance --reload" (Reload only while in develop mode)
   - `uvicorn app:app --reload`
