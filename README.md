@@ -18,6 +18,7 @@ Disclaimer: All code here was based on the code created by [Patrick Loeber][Link
     - sqlalchemy
     - jinja2
 - Start Server
-  - "uvicorn file_name:server_instance --reload" (Reload only while in develop mode)
-  - `uvicorn app:app --reload`
+  - from the `timetabling` folder:
+    - "uvicorn file_name:server_instance --reload" (Reload only while in develop mode)
+    - `uvicorn app:app --reload`
   - Obs.: Has auto docs at `/docs`
