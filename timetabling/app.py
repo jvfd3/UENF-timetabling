@@ -136,3 +136,6 @@ def todo_delete(request: Request, todo_id: int, db: Session = Depends(get_db)):
 
     url = app.url_path_for("todo_home")
     return RedirectResponse(url=url, status_code=status.HTTP_302_FOUND)
+
+
+## /TO DO/ DEVELOP THE EDIT FUCTION HERE
