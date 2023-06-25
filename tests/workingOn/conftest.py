@@ -1,5 +1,5 @@
 # conftest.py
-
+'''
 import pytest
 from timetabling import app, database
 import tempfile
@@ -26,3 +26,4 @@ def db_session():
     # close the session and delete the temporary file
     session.close()
     os.unlink(db_file.name)
+'''

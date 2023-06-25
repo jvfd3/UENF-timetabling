@@ -20,7 +20,7 @@ app = FastAPI()
 app.mount(
     "/static", StaticFiles(directory="static"), name="static"
 )  # Just to add Favicon
-# Note: if you deal with favicon in chrome, 
+# Note: if you deal with favicon in chrome,
 # remember to do shift+f5 to reload without cached data
 
 # Dependency
