@@ -13,7 +13,7 @@ def test_favicon():
     assert response.status_code == 200, f"Failed to access {website_url}"
 
     # Check if the favicon exists
-    favicon_url = f"{website_url}/static/images/favicon.ico."
+    favicon_url = f"{website_url}/static/images/favicon.ico"
     response = requests.head(favicon_url)
 
     # Check if the favicon URL returns a successful response (status code 200 or 304)
@@ -21,4 +21,5 @@ def test_favicon():
 
     # Ensure it is a valid favicon
     content_type = response.headers.get("Content-Type")
-    assert content_type == "image/x-icon", f"Invalid favicon content type: {content_type}"
+    # assert content_type == "image/x-icon", f"Invalid favicon content type: {content_type}"
+    assert content_type == "image/vnd.microsoft.icon", f"Invalid favicon content type: {content_type}"
