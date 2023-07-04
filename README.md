@@ -5,10 +5,6 @@
 
 # What is needed?
 
-Disclaimer: All code here was based on the code created by [Patrick Loeber][LinkYouTube].
-
-[LinkYouTube]: https://youtu.be/3vfum74ggHE
-
 - Create Python's Virtual Environment
   - `python3 -m venv venv`
   - Activate venv
@@ -27,3 +23,7 @@ Disclaimer: All code here was based on the code created by [Patrick Loeber][Link
     - "uvicorn file_name:server_instance --reload" (Reload only while in develop mode)
     - `uvicorn app:app --reload`
   - Obs.: Has auto docs at `/docs`
+
+# Acknowledgments
+The original structure of an web app with fasAPI was inspired by 
+[Patrick Loeber's][LinkYouTube] [video]: https://youtu.be/3vfum74ggHE
