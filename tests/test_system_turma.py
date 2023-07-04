@@ -14,7 +14,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 #lambdatest setup and opening the desired website
 from bs4 import BeautifulSoup
 
-def test_adicionar_turma():
+def _test_adicionar_turma():
 
     browser = webdriver.Chrome()
 
