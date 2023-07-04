@@ -1,4 +1,7 @@
 ![tests](https://github.com/jvfd3/UENF-timetabling/actions/workflows/python_tests.yml/badge.svg)
+![tests](https://github.com/jvfd3/UENF-timetabling/actions/workflows/integration_tests.yml/badge.svg)
+![tests](https://github.com/jvfd3/UENF-timetabling/actions/workflows/update_files_on_cloud.yml/badge.svg)
+
 
 # What is needed?
 
