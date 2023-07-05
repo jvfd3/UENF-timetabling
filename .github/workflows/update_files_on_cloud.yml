@@ -23,7 +23,9 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            rm -r CICD/timetabling
+           tmux send-keys C-c
+           tmux send-keys 'pkill uvicorn' Enter
+           tmux send-keys 'rm -r CICD/timetabling' Enter
       - uses: actions/checkout@v2
       - name: SFTP Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.2.1
@@ -47,7 +49,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd CICD
-            . venv/bin/activate
-            cd timetabling
-            uvicorn app:app --reload --host 0.0.0.0
+            tmux send-keys 'cd CICD' Enter
+            tmux send-keys '. venv/bin/activate' Enter
+            tmux send-keys 'cd timetabling' Enter
+            tmux send-keys 'uvicorn app:app --reload --host 0.0.0.0' Enter
