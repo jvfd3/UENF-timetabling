@@ -25,7 +25,7 @@ jobs:
         run: |
           cd timetabling
           uvicorn app:app --reload &
-          sleep 1 && pytest && cd .. && PYTHONPATH=timetabling tests/integration_tests/ && exit 
+          sleep 1 && pytest && cd .. && PYTHONPATH=timetabling pytest tests/integration_tests/ && exit 
       # - name: Test with pytest
       #   run: |
       #     pytest pytest tests/integra[tion_tests/
