@@ -1,9 +1,12 @@
-![tests](https://github.com/jvfd3/UENF-timetabling/actions/workflows/unit_tests.yml/badge.svg)
-![tests](https://github.com/jvfd3/UENF-timetabling/actions/workflows/integration_tests.yml/badge.svg)
-![tests](https://github.com/jvfd3/UENF-timetabling/actions/workflows/update_files_on_cloud.yml/badge.svg)
+# Timetabling
 
+## Badges
 
-# What is needed?
+![Unit Tests](https://github.com/jvfd3/UENF-timetabling/actions/workflows/unit_tests.yml/badge.svg)
+![Integration Tests](https://github.com/jvfd3/UENF-timetabling/actions/workflows/integration_tests.yml/badge.svg)
+![Updating to Cloud](https://github.com/jvfd3/UENF-timetabling/actions/workflows/update_files_on_cloud.yml/badge.svg)
+
+## What is needed?
 
 - Create Python's Virtual Environment
   - `python3 -m venv venv`
@@ -24,6 +27,10 @@
     - `uvicorn app:app --reload`
   - Obs.: Has auto docs at `/docs`
 
-# Acknowledgments
-The original structure of an web app with fasAPI was inspired by 
-[Patrick Loeber's][LinkYouTube] [video]: https://youtu.be/3vfum74ggHE
+## Acknowledgments
+
+The original structure of an web app with fasAPI was inspired by
+
+[Patrick Loeber's][LinkYouTube]
+
+[LinkYouTube]: https://youtu.be/3vfum74ggHE
