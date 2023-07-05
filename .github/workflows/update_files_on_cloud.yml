@@ -24,6 +24,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
            tmux send-keys C-c
+           tmux send-keys 'cd' Enter
            tmux send-keys 'pkill uvicorn' Enter
            tmux send-keys 'rm -r CICD/timetabling' Enter
       - uses: actions/checkout@v2
@@ -49,6 +50,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            tmux send-keys 'cd' Enter
             tmux send-keys 'cd CICD' Enter
             tmux send-keys '. venv/bin/activate' Enter
             tmux send-keys 'cd timetabling' Enter
