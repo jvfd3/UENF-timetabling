@@ -4,6 +4,8 @@ from sqlalchemy import Boolean, Integer, String
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
+
 
 from database import Base
 
@@ -44,7 +46,9 @@ class Turma(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     disciplina_id: Mapped[int] = mapped_column(ForeignKey("disciplina.id"))
+    disciplina = relationship("Disciplina", backref="turmas")
     professor_id: Mapped[int] = mapped_column(ForeignKey("professor.id"))
+    professor = relationship("Professor", backref="turmas")
 
 
 class TimeSlot(Base):

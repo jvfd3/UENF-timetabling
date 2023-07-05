@@ -4,7 +4,8 @@ from fastapi import FastAPI, Depends, Request, Form, status
 from fastapi.staticfiles import StaticFiles  # Just to add Favicon
 
 from starlette.responses import RedirectResponse
-from starlette.templating import Jinja2Templates
+# from starlette.templating import Jinja2Templates
+from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.orm import Session
 
@@ -13,7 +14,7 @@ from database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="./templates")
 
 app = FastAPI()
 

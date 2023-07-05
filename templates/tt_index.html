@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimeTabling App</title>
+
+    <head>
+      <link
+        rel="icon"
+        href="https://raw.githubusercontent.com/jvfd3/UENF-timetabling/main/timetabling/static/images/favicon.ico"
+        type="image/x-icon"
+      />
+    </head>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  </head>
+
+  <body>
+    <div style="margin-top: 50px" class="ui container">
+      <h1 class="ui center aligned header">TimeTabling App</h1>
+
+      <form class="ui form" action="/add" method="post">
+        <div class="field">
+          <label>Turma ID</label>
+          <input
+            type="text"
+            name="turma_id"
+            placeholder="Enter turma_id..."
+          /><br />
+        </div>
+
+        <div class="field">
+          <label>Time Slot</label>
+          <input
+            type="text"
+            name="time_slot"
+            placeholder="Enter time_slot..."
+          /><br />
+        </div>
+
+        <button class="ui blue button" value="Continue" type="submit">
+          Add
+        </button>
+      </form>
+
+      <hr />
+
+      {% for time_slot in time_slot_list %}
+      <div class="ui segment">
+        <p class="ui big header">
+          {{time_slot.id }} | turma: {{ time_slot.turma_id }}; slot:
+          {{time_slot.slot}}
+        </p>
+        <!--
+        {% if time_slot.complete == False %}
+        <span class="ui gray label">Not Complete</span>
+        {% else %}
+        <span class="ui green label">Completed</span>
+        {% endif %} -->
+
+        <!--<a class="ui blue button" href="/update/{{ time_slot.id }}">Update</a>-->
+
+        <a class="ui red button" href="/delete/{{ time_slot.id }}">Delete</a>
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!-- HTML code for the "Edit" button -->
+        <a
+          class="ui yellow button"
+          onclick="openEditDialog('{{ time_slot.id }}')"
+          >Edit</a
+        >
+
+        <!-- HTML code for the edit dialog -->
+        <dialog id="editDialog">
+          <form id="editForm">
+            <input
+              type="hidden"
+              id="time_slot_id"
+              name="time_slot_id"
+              value="{{ time_slot.id }}"
+            />
+            <label for="turma_id">Turma ID:</label>
+            <input type="text" id="turma_id" name="turma_id" />
+            <br />
+            <label for="time_slot">Time Slot:</label>
+            <input type="text" id="time_slot" name="time_slot" />
+            <br />
+            <button type="button" onclick="submitEditForm()">Save</button>
+            <button type="button" onclick="closeEditDialog()">Cancel</button>
+          </form>
+        </dialog>
+
+        <script>
+          // Function to open the edit dialog
+          function openEditDialog(timeSlotId) {
+            // Set the initial values in the edit form if needed
+            // For example, you can fetch the existing values using an AJAX request and populate the form fields
+
+            // Show the edit dialog
+            const editDialog = document.getElementById("editDialog");
+            editDialog.showModal();
+          }
+
+          // Function to submit the edit form
+          function submitEditForm() {
+            // Get the form data
+            const editForm = document.getElementById("editForm");
+            const formData = new FormData(editForm);
+
+            // Convert form data to JSON object
+            const jsonData = {};
+            for (const [key, value] of formData.entries()) {
+              jsonData[key] = value;
+            }
+
+            // Perform any necessary validation or processing of the form data
+
+            // Send the updated data using an AJAX request
+            fetch(`/edit/${jsonData.time_slot_id}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(jsonData),
+            })
+              .then((response) => {
+                if (response.ok) {
+                  // Handle successful response
+                  console.log("Data updated successfully");
+                  // You can perform additional actions here, such as updating the UI
+                } else {
+                  // Handle error response
+                  console.error("Failed to update data");
+                  // You can display an error message or perform any other necessary actions
+                }
+              })
+              .catch((error) => {
+                // Handle network or other errors
+                console.error("Error occurred during data update", error);
+                // You can display an error message or perform any other necessary actions
+              });
+
+            // Close the edit dialog
+            closeEditDialog();
+          }
+
+          // Function to close the edit dialog
+          function closeEditDialog() {
+            const editDialog = document.getElementById("editDialog");
+            editDialog.close();
+          }
+        </script>
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
