@@ -29,8 +29,6 @@
 
 ## Acknowledgments
 
-The original structure of an web app with fasAPI was inspired by
-
-[Patrick Loeber's][LinkYouTube]
+The original structure of an web app with fasAPI was inspired by [Patrick Loeber's][LinkYouTube].
 
 [LinkYouTube]: https://youtu.be/3vfum74ggHE
