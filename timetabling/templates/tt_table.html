@@ -51,19 +51,41 @@
       </form>
       <hr />
 
-      <table>
-        {% for i in range(4) %}
-        <tr>
-          {% for j in range(5) %}
-          <td>
-            {% set square = i * 5 + j %} {% for time_slot in time_slot_list %}
-            {% if time_slot.slot|int == square %} {{ time_slot.turma_id }} {%
-            endif %} {% endfor %}
-          </td>
-          {% endfor %}
-        </tr>
+
+{% macro table(rows, columns) %}
+<table>
+  <tr>
+    <th></th> <!-- empty cell for row header -->
+    {% for column in columns %}
+    <th>{{ column }}</th> <!-- column header -->
+    {% endfor %}
+  </tr>
+  {% for row in rows %}
+  <tr>
+    <th>{{ row }}</th> <!-- row header -->
+    {% for column in columns %}
+    <td>
+      {% if classes[row][column] %} <!-- check if there are classes for this cell -->
+      <ul>
+        {% for class in classes[row][column] %} <!-- loop over the classes list -->
+        <li> 
+          <a class="ui" href="/update/{{ class.id }}">{{ class.turma_id }} </a>
+        </li> <!-- display each class as a ui element -->
         {% endfor %}
-      </table>
+      </ul>
+      {% endif %}
+    </td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+{% endmacro %}
+
+{% set rows = ["08:00-10:00", "10:00-12:00", "14:00-16:00", "16:00-18:00"] %}
+{% set columns = ["mon", "tue", "wed", "thu", "fri"] %}
+{{ table(rows, columns) }}
+
+
     </div>
   </body>
 </html>
